@@ -72,9 +72,6 @@ def pressEnterOnElement(ele):
     wait1.until(EC.visibility_of_element_located((ele))).send_keys(Keys.ENTER)
 
 
-def capture_screenshot(filename):
-    driver.get_screenshot_as_file(filename)
-
 def close_browser():
     if(browser_already_open()):
         driver.quit()
