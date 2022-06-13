@@ -1,0 +1,1 @@
+This project contains web-scraper code that scrapes car details from Bidding Cars website using the VIN numbers. The bot is capable of bypassing cloud-flare security.
