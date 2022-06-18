@@ -4,7 +4,6 @@ import requests.auth
 from requests.structures import CaseInsensitiveDict
 import json
 from dotenv import load_dotenv
-# from rauth import OAuth2Service
 
 load_dotenv()
 
@@ -12,7 +11,11 @@ load_dotenv()
 class GoogleSheet:
     def getAccessToken(self):
         url = "https://accounts.google.com/o/oauth2/token"
-        payload = 'client_id=424096849316-akcvobcofdfrr53g1r6g8bl06na6qu7l.apps.googleusercontent.com&client_secret=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&refresh_token=1%2F%2F03HTLORGXZXnRCgYIARAAGAMSNwF-L9IrA7bMNAsqHOkINUR_qYZBKNHVWEbqGEErw1a4xrTyEV7L4NPnBEbcOLW3xUrJFInEgO4&grant_type=refresh_token'
+        client_id = os.getenv('CLIENT_ID')
+        client_secret = os.getenv('CLIENT_SECRET')
+        refresh_token = os.getenv('REFRESH_TOKEN')
+        grant_type = os.getenv('GRANT_TYPE')
+        payload = "client_id="+client_id+"&client_secret="+client_secret+"&refresh_token="+refresh_token+"&grant_type="+grant_type+""
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -41,3 +44,27 @@ class GoogleSheet:
         print("Updated Rows: " + str(response_object['updates']['updatedRows']))
         print("Updated Columns: " + str(response_object['updates']['updatedColumns']))
         print("Updated Cells: " + str(response_object['updates']['updatedCells']))
+
+    def readFromSheet(self):
+        dates_List = []
+        api = os.getenv('END_POINT')
+        sheetID = os.getenv('SHEET_ID')
+        sheetName = os.getenv('SHEET_NAME_READ')
+        range = os.getenv('RANGE_READ')
+        key = os.getenv('API_KEY')
+        url = api + '/' + sheetID + '/' + 'values:batchGet?ranges=' + sheetName + range + '&key=' + key
+        response = requests.get(url)
+        data = response.json()
+        records = data["valueRanges"][0]["values"]
+        for row in records:
+            date = {}
+            if row:
+                try:
+                    date['year'] = row[9]
+                    date['make'] = ((row[10].lower()).title())
+                    date['model'] = ((row[11].lower()).title())
+                    date['vin'] = row[8]
+                    dates_List.append(date)
+                except IndexError:
+                    continue
+        return dates_List

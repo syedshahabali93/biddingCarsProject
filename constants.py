@@ -9,7 +9,5 @@ status_constraint = ['Run and Drive']
 sale_doc_constraint = ['Salvage', 'Rebuildable', 'Vcc', 'Mv-907a', 'Certificate of destruction', 'SC',
                        'BP', 'SV', 'DC', 'CD', 'ST']
 special_models = ['Alfa Romeo', 'Land Rover', 'Aston Martin']
-
-
-
-
+email = "shahabali123456@gmail.com"
+password = "Waqarali!1"

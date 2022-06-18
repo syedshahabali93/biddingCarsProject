@@ -14,19 +14,15 @@ from selenium.webdriver.common.keys import Keys
 def launch_browser():
     print("Launching Browser")
     global driver, wait1
-    chromedriver_path = "/home/shahab/PycharmProjects/biddingCarsv1/chromedriver"
-
     driver = uc.Chrome(use_subprocess=True)
     wait1 = WebDriverWait(driver, 10)
     driver.maximize_window()
-
 
 def load_url(base_url):
     print("Loading url")
     driver.get(base_url)
 
 def wait_and_enter_text(ele, text):
-    print(text)
     wait1.until(EC.visibility_of_element_located(ele)).send_keys(text)
 
 def wait_and_click(element_name, ele):
@@ -78,6 +74,9 @@ def switchToWindow(win):
 def getElementText(ele):
     return wait1.until(EC.visibility_of_element_located(ele)).text
 
+def getElementTextUpdate(ele):
+    return driver.find_element_by_xpath(ele).text
+
 def getElementAttribute(ele, attr):
     return wait1.until(EC.visibility_of_element_located(ele)).get_attribute(attr)
 
@@ -92,5 +91,3 @@ def getPageURL():
 
 def getElementsList(ele):
     return driver.find_elements(By.XPATH, ele)
-
-
