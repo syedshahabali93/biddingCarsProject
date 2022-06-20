@@ -3,25 +3,24 @@ from constants import *
 
 name = "to_be_replaced"
 
-searchVehicleField = (By.XPATH, "//input[@id='search_field']")
-login_password_input = (By.XPATH, "//input[@id='password']")
-login_button = (By.XPATH, "//button[@type='submit']")
-
-# course_start_button = (By.XPATH, "//div[text()='"+name+"']/parent::div/following-sibling::button/span[contains(text(),'Start')]")
-
-# my_trainings_show_all_button = (By.XPATH, "//h2[text()='"+my_trainings_label+"']/preceding-sibling::a[contains(text(),'show all')]")
-# course_status_dropdown = (By.XPATH, "//mat-label[contains(text(),'Course Status')]/ancestor::span/preceding-sibling::mat-select")
-# course_status_completed_dropdown_option = (By.XPATH, "//mat-option//span[contains(text(),'completed')]")
-# course_modal = (By.XPATH, "//app-course-card//div[@class='title'][text()='"+course_name+"']")
-# loading_spinner = (By.XPATH, "//img[@alt='spinner']")
-# interactive_video_row = (By.XPATH, "(//span[text()='Interactive Video']/ancestor::div[@fxlayout='row'])[2]")
-# interactive_video_start_button = (By.XPATH, "(//span[text()='Interactive Video']/ancestor::div[@fxlayout='row'])[2]//div/div/span[contains(text(),'Start') or contains(text(),'Continue') or contains(text(),'View')]")
-#
-# video_slider_button = (By.XPATH, "//a[@role='slider']")
-# video_play_button1 = (By.XPATH, "//div[@role='button'][@class='h5p-control h5p-pause h5p-play']")
-# video_play_button2 = (By.XPATH, "//div[@role='button'][@class='h5p-control h5p-play']")
-#
-#
-#
-#
-#
+login = (By.XPATH, "(//*[text()='Log In'])[2]")
+email_field = (By.XPATH, "//*[@id='exampleInputEmail1']")
+password_field = (By.XPATH, "//*[@id='exampleInputPassword1']")
+sign_in = (By.XPATH, "//*[@id='login-form']/button")
+type_dropdown = (By.XPATH, "//*[@id='dropdownType']")
+type_dropdown_value = (By.XPATH, "//*[text()='" + dropdown_text + "']")
+year_from = (By.XPATH, "//*[@id='dropdownYearFrom']")
+year_to = (By.XPATH, "//*[@id='dropdownYearTo']")
+year_from_archived = (By.XPATH, "(//*[@id='dropdownYearFrom'])[1]")
+year_to_archived = (By.XPATH, "(//*[@id='dropdownYearTo'])[1]")
+all_makes = (By.XPATH, "//*[@id='dropdownCountry']")
+all_models = (By.XPATH, "//*[@id='dropdownModel']")
+search_button = (By.XPATH, "//*[@id='archived-filter']/form/div/div[3]/button")
+advanced_filters = (By.XPATH, "//*[@id='advanced-filters']")
+intact_airbags_radiobutton = (By.XPATH, "//*[@value='Intact' and @name='airbags']")
+search_results = (By.XPATH, "//*[@id='search_area']")
+check_results_found = (By.XPATH, "//*[text()='Search Results']")
+makes_dropdown_value = (By.XPATH, "//*[@id='search_make_manufacturer']/div/a")
+models_dropdown_value = (By.XPATH, "//*[@id='search_model_manufacturer']/div/a")
+make_dropdown_list = (By.XPATH, "//*[@id='search_make_manufacturer']/div")
+model_dropdown_list = (By.XPATH, "//*[@id='search_make_manufacturer']/div")
