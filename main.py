@@ -95,9 +95,16 @@ def findCars():
                         time.sleep(2)
                         model_dropdown_values = getElementsList("//*[@id='search_model_manufacturer']/div/a")
                         found_model_element = False
+                        temporary = ""
                         for model_href in model_dropdown_values:
                             model_href_text = model_href.text
                             if str(date['model']).lower() in str(model_href_text).lower():
+                                found_model_element = True
+                                break
+                        for model_href in model_dropdown_values:
+                            model_href_text = model_href.text
+                            temporary = str((date['model'].split(" "))[0])
+                            if temporary.lower() in str(model_href_text).lower():
                                 found_model_element = True
                                 break
                         if found_model_element == False:
@@ -110,6 +117,8 @@ def findCars():
                         time.sleep(2)
                         try:
                             time.sleep(2)
+                            if found_model_element == True:
+                                all_models_value = (By.XPATH, "//*[text()='" + temporary.capitalize() + "']")
                             wait_and_find_element(all_models_value)
                             wait_and_click('Clicking on Model Text', all_models_value)
                             try:
