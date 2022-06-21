@@ -4,7 +4,6 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
@@ -13,30 +12,28 @@ from selenium.webdriver.common.keys import Keys
 
 def launch_browser():
     print("Launching Browser")
-    global driver, wait1
+    global driver, wait1, wait2, wait3
+    chromedriver_path = "/home/shahab/PycharmProjects/biddingCars/chromedriver"
     driver = uc.Chrome(use_subprocess=True)
     wait1 = WebDriverWait(driver, 10)
     driver.maximize_window()
+    print(driver.execute_script("return navigator.userAgent;"))
+
 
 def load_url(base_url):
-    print("Loading url")
     driver.get(base_url)
 
 def wait_and_enter_text(ele, text):
-    wait1.until(EC.visibility_of_element_located(ele)).send_keys(text)
+    wait1.until(EC.visibility_of_element_located((ele))).send_keys(text)
 
 def wait_and_click(element_name, ele):
-    print("Clicking on: " + element_name)
-    wait1.until(EC.visibility_of_element_located(ele)).click()
+    wait1.until(EC.visibility_of_element_located((ele))).click()
 
 def wait_and_find_element(ele):
-    return wait1.until(EC.visibility_of_element_located(ele))
-
-def wait_and_find_element_by_id(id):
-    return wait1.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='"+id+"']")))
+    return wait1.until(EC.visibility_of_element_located((ele)))
 
 def wait_for_element_invisible(ele):
-    wait1.until(EC.invisibility_of_element_located(ele))
+    wait1.until(EC.invisibility_of_element_located((ele)))
 
 def drag_and_drop(element, x, y):
     ActionChains(driver).drag_and_drop_by_offset(element, x, y).perform()
@@ -72,22 +69,10 @@ def switchToWindow(win):
     return driver.switch_to.window(win)
 
 def getElementText(ele):
-    return wait1.until(EC.visibility_of_element_located(ele)).text
-
-def getElementTextUpdate(ele):
-    return driver.find_element_by_xpath(ele).text
-
-def getElementAttribute(ele, attr):
-    return wait1.until(EC.visibility_of_element_located(ele)).get_attribute(attr)
+    return wait1.until(EC.visibility_of_element_located((ele))).text
 
 def waitForElementAndPressEnter(ele):
-    wait1.until(EC.visibility_of_element_located(ele)).send_keys(Keys.ENTER)
+    wait1.until(EC.visibility_of_element_located((ele))).send_keys(Keys.ENTER)
 
 def closeCurrentWindow():
     driver.close()
-
-def getPageURL():
-    return driver.current_url
-
-def getElementsList(ele):
-    return driver.find_elements(By.XPATH, ele)

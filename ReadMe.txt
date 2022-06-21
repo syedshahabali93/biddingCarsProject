@@ -7,4 +7,4 @@ Steps to run:
 5. Download and copy the chromedriver in the root directory
 6. Change the chromedriver path in base.py file
 7. Run command python main.py
-8. Replace the SHEET_ID, SHEET_NAME, RANGE, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, SHEET_NAME_READ, RANGE_READ, API_KEY with your values
+8. Replace the API_KEY, SHEET_ID, SHEET_NAME, RANGE, with your values
