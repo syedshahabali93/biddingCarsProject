@@ -40,6 +40,7 @@ class GoogleSheet:
         url = api + '/' + sheetID + '/values/' + range + ':append?valueInputOption=' + valueInputOption + '&includeValuesInResponse=' + includeValuesInResponse + '&responseValueRenderOption=' + responseValueRenderOption + '&insertDataOption=' + insertDataOption
         response = requests.post(url, headers=headers, data=payload)
         response_object = json.loads(response.text)
+        print(response_object)
         print("Updated Range: " + str(response_object['updates']['updatedRange']))
         print("Updated Rows: " + str(response_object['updates']['updatedRows']))
         print("Updated Columns: " + str(response_object['updates']['updatedColumns']))
